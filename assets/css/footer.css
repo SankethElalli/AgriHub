@@ -1,0 +1,17 @@
+.footer {
+  background-color: #8f8f8f5b !important;
+  padding: 0px !important;
+  font-size: 0.2rem;
+  bottom: 0; /* Position it at the bottom */
+  width: 100%; /* Full width */
+}
+
+.footer .row {
+  margin: 0 !important;
+}
+
+.footer .col-auto,
+.footer .col-4,
+.footer .col-5 {
+  padding: 0 !important;
+}
