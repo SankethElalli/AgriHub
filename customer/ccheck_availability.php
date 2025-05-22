@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../sql.php');
+require('../sql.php'); // Includes SQL connection script
 
 if (isset($_POST['crops']) && isset($_POST['quantity'])) {
 $flag=0;

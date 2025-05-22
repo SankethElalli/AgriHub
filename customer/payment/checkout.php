@@ -2,9 +2,11 @@
 require_once 'config.php';
 session_start();
 
+// Get amount from session and convert to USD
 $amount_inr = isset($_SESSION['amount']) ? $_SESSION['amount'] : 0;
 $amount_usd = round($amount_inr * INR_TO_USD_RATE, 2);
 
+// Redirect if no amount set
 if($amount_inr <= 0) {
     header("Location: ../cbuy_crops.php");
     exit();

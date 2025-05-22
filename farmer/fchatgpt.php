@@ -222,7 +222,7 @@ function clearContent(){
 }
 	
 const url = new URL(window.location.href);
-const apiKey = "<?php echo getenv('MISTRAL_API_KEY'); ?>";   // Replace with your Mistral API key
+const apiKey = ""; // Replace with your actual API key
 const chatbox = $("#chatbox");
 const userInput = $("#userInput");
 const sendButton = $("#sendButton");

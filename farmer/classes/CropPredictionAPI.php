@@ -3,12 +3,9 @@ class CropPredictionAPI {
     private $apiKey;
     private $apiEndpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
-    public function __construct($apiKey = '') //Your API KEY 
+    public function __construct($apiKey = '') // Set your API key here
     {
-        $this->apiKey = $apiKey ?: getenv('OPENROUTER_API_KEY');
-        if (!$this->apiKey) {
-            throw new Exception('API key not set. Please set OPENROUTER_API_KEY in your environment.');
-        }
+        $this->apiKey = $apiKey;
     }
 
     public function getCropPrediction($state, $district, $season) {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../sql.php');
+require('../sql.php'); // Includes SQL connection script
 
 		if(isset($_POST ['add_to_cart'])){
 							$crop=$_POST['crops'];

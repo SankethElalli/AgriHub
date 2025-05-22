@@ -121,8 +121,7 @@ if(isset($_POST['Crop_Recommend'])) {
     $ph = trim($_POST['ph']); 
     $r = trim($_POST['r']);
 
-    // Your DeepseekAPI API key
-    $deepseek = new DeepseekAPI('');
+    $deepseek = new DeepseekAPI(''); // Set your API key here
     
     // Prepare parameters
     $params = [

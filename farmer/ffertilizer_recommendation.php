@@ -145,8 +145,7 @@ if(isset($_POST['Fert_Recommend'])) {
         if($n < 0 || $p < 0 || $k < 0 || $t < 0 || $h < 0 || $sm < 0) {
             echo "<div class='alert alert-danger'>Please enter valid positive values.</div>";
         } else {
-            // Your DeepSeek API key
-            $fertilizer = new FertilizerAPI('');
+            $fertilizer = new FertilizerAPI(''); // Set your API key here
             
             $params = [
                 'n' => $n,

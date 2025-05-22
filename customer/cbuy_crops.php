@@ -5,7 +5,7 @@ include ('../sql.php');
 ini_set('memory_limit', '-1');
 
 if(!isset($_SESSION['customer_login_user'])){
-header("location: ../index.php");}
+header("location: ../index.php");} // Redirecting To Home Page
 $query4 = "SELECT * from custlogin where email='$user_check'";
               $ses_sq4 = mysqli_query($conn, $query4);
               $row4 = mysqli_fetch_assoc($ses_sq4);

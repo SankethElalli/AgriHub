@@ -3,9 +3,11 @@ require_once 'config.php';
 require_once '../../sql.php';
 session_start();
 
+// Get JSON POST data
 $data = json_decode(file_get_contents('php://input'), true);
 $orderID = $data['orderID'];
 
+// Verify the payment with PayPal
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, PAYPAL_API_URL . '/v2/checkout/orders/' . $orderID);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -22,6 +24,7 @@ if ($httpCode === 200) {
     $order = json_decode($response, true);
     
     if ($order['status'] === 'COMPLETED') {
+        // Store both USD and INR amounts
         $_SESSION['payment_completed'] = true;
         $_SESSION['payment_id'] = $orderID;
         $_SESSION['payment_amount_usd'] = $order['purchase_units'][0]['amount']['value'];
