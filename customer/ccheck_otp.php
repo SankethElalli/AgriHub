@@ -1,7 +1,12 @@
 <?php
 session_start();
 
-$con=mysqli_connect('localhost','root','','agriculture_portal');
+$con = mysqli_connect(
+    getenv('DB_HOST');
+    getenv('DB_USER');
+    getenv('DB_PASS');
+    getenv('DB_NAME')
+);
 $otp=$_POST['otp'];
 $email=$_SESSION['customer_login_user'];
 $res=mysqli_query($con,"select * from custlogin where email='$email' and otp='$otp'");

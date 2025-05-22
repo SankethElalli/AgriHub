@@ -1,6 +1,11 @@
 <?php
 // mysqli_connect() function opens a new connection to the MySQL server.
-$conn = mysqli_connect("localhost", "root", "", "agriculture_portal");
+$conn = mysqli_connect(
+    getenv('DB_HOST');
+    getenv('DB_USER');
+    getenv('DB_PASS');
+    getenv('DB_NAME')
+);
 session_start();// Starting Session
 // Storing Session
 $user_check = $_SESSION['customer_login_user'];

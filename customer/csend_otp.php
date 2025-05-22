@@ -109,13 +109,13 @@ function smtp_mailer($to, $subject, $msg) {
     $mail->SMTPDebug = 0;
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = 'ssl';
-    $mail->Host = "smtp.gmail.com";
-    $mail->Port = 465;
+    $mail->Host = getenv('SMTP_HOST');
+    $mail->Port = getenv('SMTP_PORT');
     $mail->IsHTML(true);
     $mail->CharSet = 'UTF-8';
-    $mail->Username = "elallisanketh7@gmail.com";
-    $mail->Password = "dxjy rbhf pzxt ahzw";
-    $mail->SetFrom("elallisanketh7@gmail.com");
+    $mail->Username = getenv('SMTP_USER');
+    $mail->Password = getenv('SMTP_PASS');
+    $mail->SetFrom(getenv('SMTP_FROM');
     $mail->Subject = $subject;
     $mail->Body = $msg;
     $mail->AddAddress($to);

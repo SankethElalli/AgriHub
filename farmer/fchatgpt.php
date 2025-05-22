@@ -3,7 +3,7 @@ include ('fsession.php');
 ini_set('memory_limit', '-1');
 
 if(!isset($_SESSION['farmer_login_user'])){
-header("location: ../index.php");}
+header("location: ../index.php");} // Redirecting To Home Page
 $query4 = "SELECT * from farmerlogin where email='$user_check'";
               $ses_sq4 = mysqli_query($conn, $query4);
               $row4 = mysqli_fetch_assoc($ses_sq4);
@@ -214,6 +214,7 @@ $query4 = "SELECT * from farmerlogin where email='$user_check'";
 <script>
 function clearContent(){
     document.getElementById('chatbox').innerHTML = '<span id="copy-popup" class="popup">Copied!</span>';
+    // Reset messages to only include the system message
     messages = [{
         "role": "system",
         "content": "You are a helpful agricultural assistant powered by Mistral Small. Provide farmers with accurate and helpful information about farming practices, crop management, pest control, and agricultural technologies. Be concise and practical in your advice."
@@ -221,7 +222,7 @@ function clearContent(){
 }
 	
 const url = new URL(window.location.href);
-const apiKey = "VusXb6eOuRxEOnVtkbXpadsMrtNXq9Jg";   // Your Mistral API key
+const apiKey = "<?php echo getenv('MISTRAL_API_KEY'); ?>";   // Replace with your Mistral API key
 const chatbox = $("#chatbox");
 const userInput = $("#userInput");
 const sendButton = $("#sendButton");

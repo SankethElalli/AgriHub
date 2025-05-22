@@ -12,7 +12,7 @@ $row4 = mysqli_fetch_assoc($ses_sq4);
 $para1 = $row4['farmer_id'];
 $para2 = $row4['farmer_name'];
 
-$apiKey = ""; //Your API KEY 
+$apiKey = getenv('CURRENTS_API_KEY') ?: "TVcyuNNWpQDP7WFRRS9NWZtWFWMmWfrZyGq-R1gEk5Ptnw4K";
 $url = "https://api.currentsapi.services/v1/latest-news?apiKey=$apiKey&country=in";
 
 $newsdata = null;

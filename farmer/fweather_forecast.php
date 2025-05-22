@@ -24,9 +24,9 @@ $District_name_farmer=$display_district_name[0];
 
 // WeatherApi City_Id Code : 
 ini_set('memory_limit', '-1');
-$url = 'static/citylist.json';
-$data = file_get_contents($url);
-$district= json_decode($data);
+$url = 'static/citylist.json'; // path to your JSON file
+$data = file_get_contents($url); // put the contents of the file into a variable
+$district= json_decode($data); // decode the JSON feed
 
 $district_weather_id=0;
 
@@ -38,6 +38,7 @@ foreach ($district as $district) {
 }
 if($district_weather_id<=0){
     $district_weather_id=1253952;
+	// Mangalore - 1263780   , Mysore - 1262321 , Udupi - 1253952
 }
 $city_weather_id=strval($district_weather_id);
 
@@ -45,9 +46,11 @@ $city_weather_id=strval($district_weather_id);
 
 
 date_default_timezone_set("Asia/Kolkata");
-$apiKey = ""; //Your API KEY 
+$apiKey = getenv('OPENWEATHER_API_KEY') ?: "1811dccd0d0fe14e866ff574c97160c2"; //Your API KEY 
 $cityId = $city_weather_id;
 
+
+// https://api.openweathermap.org/data/2.5/forecast?id=1275339&lang=en&units=metric&APPID=1811dccd0d0fe14e866ff574c97160c2
 ;
 
 $googleApiUrl ="https://api.openweathermap.org/data/2.5/forecast?id=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;

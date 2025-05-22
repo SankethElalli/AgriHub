@@ -2,6 +2,7 @@
 session_start();
 require('../sql.php');
 
+// Verify payment was completed
 if(!isset($_SESSION['payment_completed']) || !$_SESSION['payment_completed']) {
     header("location: cbuy_crops.php");
     exit();
@@ -9,13 +10,16 @@ if(!isset($_SESSION['payment_completed']) || !$_SESSION['payment_completed']) {
 
 date_default_timezone_set("Asia/Calcutta"); 
 $userlogin=$_SESSION['customer_login_user'];
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="agriculture_portal";
+$servername = getenv('DB_HOST');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASS');
+$dbname = getenv('DB_NAME');
 
+if (!$servername || !$username || !$dbname) {
+    die('Database environment variables are not set.');
+}
 //Create Connection 
-$conn =mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);

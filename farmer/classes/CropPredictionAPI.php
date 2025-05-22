@@ -5,7 +5,10 @@ class CropPredictionAPI {
 
     public function __construct($apiKey = '') //Your API KEY 
     {
-        $this->apiKey = $apiKey;
+        $this->apiKey = $apiKey ?: getenv('OPENROUTER_API_KEY');
+        if (!$this->apiKey) {
+            throw new Exception('API key not set. Please set OPENROUTER_API_KEY in your environment.');
+        }
     }
 
     public function getCropPrediction($state, $district, $season) {

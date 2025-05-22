@@ -3,9 +3,12 @@ class DeepseekAPI {
     private $apiKey;
     private $apiEndpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
-    public function __construct($apiKey = '') //Your API KEY 
+    public function __construct($apiKey = null) 
     {
-        $this->apiKey = $apiKey;
+        $this->apiKey = $apiKey ?: getenv('OPENROUTER_API_KEY');
+        if (!$this->apiKey) {
+            throw new Exception('API key not set. Please set OPENROUTER_API_KEY in your environment.');
+        }
     }
 
     public function getCropPrediction($params) {
@@ -56,8 +59,8 @@ class DeepseekAPI {
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
                 'Authorization: Bearer ' . $this->apiKey,
                 'Content-Type: application/json',
-                'HTTP-Referer: https://agrihub.com',
-                'X-Title: AgriHub'
+                'HTTP-Referer: https://agrihub.com',  // Required by OpenRouter
+                'X-Title: AgriHub'  // Required by OpenRouter
             ]);
 
             $response = curl_exec($ch);
