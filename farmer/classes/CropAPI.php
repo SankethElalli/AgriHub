@@ -56,8 +56,8 @@ class DeepseekAPI {
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
                 'Authorization: Bearer ' . $this->apiKey,
                 'Content-Type: application/json',
-                'HTTP-Referer: https://agrihub.com',  // Required by OpenRouter
-                'X-Title: AgriHub'  // Required by OpenRouter
+                'HTTP-Referer: https://agrihub.com',
+                'X-Title: AgriHub'
             ]);
 
             $response = curl_exec($ch);
@@ -115,7 +115,7 @@ class DeepseekAPI {
     public function testConnection() {
         try {
             $data = [
-                'model' => 'deepseek/deepseek-chat',  // Corrected model name
+                'model' => 'deepseek/deepseek-chat',
                 'messages' => [
                     [
                         'role' => 'system',
