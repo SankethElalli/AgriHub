@@ -113,8 +113,8 @@ function smtp_mailer($to, $subject, $msg) {
     $mail->Port = 465;
     $mail->IsHTML(true);
     $mail->CharSet = 'UTF-8';
-    $mail->Username = "elallisanketh7@gmail.com";
-    $mail->Password = "dxjy rbhf pzxt ahzw";
+    $mail->Username = "";
+    $mail->Password = "";
     $mail->SetFrom("elallisanketh7@gmail.com");
     $mail->Subject = $subject;
     $mail->Body = $msg;
